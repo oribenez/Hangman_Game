@@ -1,0 +1,198 @@
+﻿
+
+body {
+    background: lightgray;
+}
+
+* {
+    font-family: 'Le Patin', 'Segoe UI',Tahoma,Arial,David;
+    /*margin: 0;*/
+}
+
+h1 {
+    font-size: 50px;
+}
+
+#parent {
+}
+#sky {
+    margin: 0 auto;
+}
+
+.main {
+    width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    background: rgba(173, 216, 230,0.7);
+    z-index: 9999117;
+    position: relative;
+}
+
+.cloud {
+    position: absolute;
+    width: 180px;
+    height: 120px;
+    background: url(../Images/cloud.png);
+}
+
+#pnlJumpMain {
+    position:absolute;
+}
+
+#wrapSubject {
+    font-size: 30px;
+}
+
+#pnlNewGame {
+    text-align:right;
+    position:absolute;
+    margin: 5px 5px 0 0;
+
+}
+    .btnStl input, #pnlNewGame input, #menu input {
+        position: relative;
+        color: #fff;
+        text-decoration: none;
+        background-color: #f16b4f;
+        font-weight: 700;
+        display: block;
+        padding: 4px;
+	    text-align: center;
+	    cursor:pointer;
+        outline:none;
+        border: none;
+	    -webkit-transition: all 0.3s ease;
+	    -moz-transition: all 0.3s ease;
+	    -ms-transition: all 0.3s ease;
+	    -o-transition: all 0.3s ease;
+	    transition: all 0.3s ease;
+    }
+    .btnStl input:hover, #pnlNewGame input:hover, #menu input:hover {
+        background: #ea2328;
+        position: relative;
+    }
+    /*#pnlNewGame input:active {
+        background: #ea2328;
+        position: relative;
+    }*/
+#menu {
+    padding: 0 0 50px 0;
+}
+
+#pnlHangman {
+    
+}
+
+#wrapImgHangman {
+    width: 600px;
+    height: 333px;
+    float:right;
+}
+
+#wrapScore {
+    width: 300px;
+    height: 333px;
+    float: left;
+}
+    #wrapScore h2 {
+        text-align:right;
+    }
+    #tblScore, #tblScore td, #tblScore th {
+        /*border:1px solid #f16b4f;*/
+        border-collapse:collapse;
+        padding:7px;
+    }
+
+    #tblScore th {
+        background-color:#f16b4f;
+        color:white;
+        font-size: 20px;
+        padding:10px;
+    }
+    #tblScore tr:nth-child(even) {background: #CCC}
+    #tblScore tr:nth-child(odd) {background: #FFF}
+
+#info {
+    width: 300px;
+    float:left;
+    margin: 80px 0 0 0;
+}
+#wrapPlayers {
+    margin: 10px 0 0 0;
+    font-size: 20px;
+}
+#namePlaying {
+    color: red;
+font-weight: bold;
+}
+#pnlNewGame {
+    margin: 10px 106px 0 0;
+}
+
+#pnlLetters {
+    background: url(../Images/ground.png);
+    clear: both;
+    box-shadow: burlywood 0px 16px 35px -5px;
+}
+#grass {
+    background: url(../Images/grass.png);
+    height: 50px;
+    margin: 0;
+    color: #fff;
+    text-align:center;
+}
+#wrapLetters {
+    margin: 0 auto;
+    padding: 10px 0 30px 0;
+    width: 700px;
+}
+    #pnlLetters input, #pnlLetters input:focus{
+        background:none;
+        border: none;
+        outline:none;
+        color: #fff;
+        font-weight:bold;
+        
+    }
+    #pnlLetters input:hover{
+        cursor:pointer;
+        
+    }
+    #tblWord {
+        margin: 0 auto;
+        border-color: gray;
+        height: 50px;
+        width: 200px;
+        font-size: 50px;
+        font-weight: bold;
+        color: white;
+    }
+        #pnlWord td {
+            border-radius: 36px;
+            background-color: rgba(222, 184, 135, 0.7);
+        }
+
+
+#menu input[type="submit"] {
+    font-size: 25px;
+    width: 200px;
+    height:50px;
+    margin: 0 auto;
+}
+#wrapImg {
+    position: absolute;
+    margin: 0px 150px 0 0;
+}
+
+#game #gameOver {
+    width: 900px;
+    background-color: rgba(51, 51, 51, 0.95);
+    opacity: 0.95;
+    height: 700px;
+    position: absolute;
+    margin: -700px 0 0 0;
+    font-size: 130px;
+    color: red;
+    text-align: center;
+    font-weight: bold;
+}
