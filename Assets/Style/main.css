@@ -49,7 +49,7 @@ h1 {
     margin: 5px 5px 0 0;
 
 }
-    .btnStl input, #pnlNewGame input, #menu input {
+    .btnStl input, #pnlNewGame input, #menu input, input#btnStartGame {
         position: relative;
         color: #fff;
         text-decoration: none;
@@ -57,20 +57,20 @@ h1 {
         font-weight: 700;
         display: block;
         padding: 4px;
-	    text-align: center;
-	    cursor:pointer;
-        outline:none;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
         border: none;
-	    -webkit-transition: all 0.3s ease;
-	    -moz-transition: all 0.3s ease;
-	    -ms-transition: all 0.3s ease;
-	    -o-transition: all 0.3s ease;
-	    transition: all 0.3s ease;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
     }
-    .btnStl input:hover, #pnlNewGame input:hover, #menu input:hover {
-        background: #ea2328;
-        position: relative;
-    }
+        .btnStl input:hover, #pnlNewGame input:hover, #menu input:hover, #btnStartGame {
+            background: #ea2328;
+            position: relative;
+        }
     /*#pnlNewGame input:active {
         background: #ea2328;
         position: relative;
@@ -173,10 +173,10 @@ font-weight: bold;
         }
 
 
-#menu input[type="submit"] {
+#menu input[type="submit"], #btnStartGame {
     font-size: 25px;
     width: 200px;
-    height:50px;
+    height: 50px;
     margin: 0 auto;
 }
 #wrapImg {

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Main.aspx.cs" Inherits="Main" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="Main" %>
 
 <!DOCTYPE html>
 
@@ -36,6 +36,11 @@
             <div class="main">
                 <asp:Panel ID="pnlJumpMain" CssClass="btnStl" runat="server">
                     <asp:Button ID="jumpMain" runat="server" Text="> לתפריט הראשי" OnClick="jumpMain_Click" />
+                    <asp:Button ID="newGame" runat="server" Text="משחק חדש" OnClick="newGame_Click" />
+                </asp:Panel>
+                <asp:Panel ID="pnlNewGame" CssClass="btnStl" runat="server">
+                    
+
                 </asp:Panel>
                 <h1>איש תלוי</h1>
                 <asp:Panel ID="menu" runat="server">
@@ -45,11 +50,11 @@
                     </div>
 
                     <div id="wrapBtns">
-                        <asp:Button ID="btnStart" runat="server" Text="התחל משחק" OnClick="btnStart_Click"  />
+                        <asp:Button ID="btnPlayersNames" runat="server" Text="התחל משחק" OnClick="btnStartGame_Click"  />
                         <br />
                         <asp:Button ID="btnRules" runat="server" Text="הוראות" OnClick="btnRules_Click" />
                         <br />
-                        <asp:Button ID="btnScore" runat="server" Text="תוצאות" OnClick="btnScore_Click" />
+                        <%--<asp:Button ID="btnScore" runat="server" Text="תוצאות" OnClick="btnScore_Click" />--%>
                     </div>
       
                     <div style="clear:both;"></div>
@@ -95,12 +100,12 @@
                             <asp:Image ID="imgHangman" ImageUrl="~/Assets/Images/Hangman1.png" runat="server" />
                         </div>
                         <asp:Panel ID="info" runat="server">
-                            <asp:Panel ID="wrapPlayers" runat="server">
+                            <%--<asp:Panel ID="wrapPlayers" runat="server">
                                 <b>שחקנים</b>
-                                <asp:Panel ID="namePlaying" runat="server"><%=strNamePlaying %></asp:Panel>
-                                <asp:Panel ID="name" runat="server"><%=strName %></asp:Panel>
-                            </asp:Panel>
-                            <asp:Panel ID="pnlNewGame" runat="server"><asp:Button ID="newGame" runat="server" Text="משחק חדש" OnClick="newGame_Click" /></asp:Panel>
+                                <asp:Panel ID="namePlaying" runat="server">← <%=Session["currentPlayer"].ToString() %></asp:Panel>
+                                <asp:Panel ID="name" runat="server"><%= Session["currentPlayer"].ToString() == Session["player1"].ToString() ? Session["player2"].ToString() : Session["player1"].ToString() %></asp:Panel>
+                            </asp:Panel>--%>
+                            
                         </asp:Panel>
                     
                         <asp:Panel ID="pnlLetters" runat="server">
@@ -115,6 +120,20 @@
                     <%--<div id="gameOver">
                         המשחק הסתיים <br /> אופיר הפסיד
                     </div>--%>
+                </asp:Panel>
+
+                <asp:Panel ID="players" runat="server">
+                    <div>
+                        <asp:Label ID="lblPlayerName1" runat="server" Text="שם השחקן:"></asp:Label>
+                        <asp:TextBox ID="txtPlayerName1" runat="server" placeholder="שחקן 1"></asp:TextBox>
+                    </div>
+                    <br />
+                    <div>
+                        <asp:Label ID="lblPlayerName2" runat="server" Text="שם השחקן:"></asp:Label>
+                        <asp:TextBox ID="txtPlayerName2" runat="server" placeholder="שחקן 2"></asp:TextBox>
+                    </div>
+                    <br />
+                    <asp:Button ID="btnStartGame" runat="server" Text="קדימה" OnClick="btnStartGame_Click"  />
                 </asp:Panel>
             </div>
         </form>

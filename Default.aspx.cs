@@ -12,8 +12,8 @@ public partial class Main : System.Web.UI.Page
     private char startChar = 'א';
     private char endChar = 'ת';
 
-    public string strNamePlaying = "";
-    public string strName = "";
+    public string strNamePlaying;
+    public string strName;
     public string str = "";
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -22,10 +22,11 @@ public partial class Main : System.Web.UI.Page
             Session["subject"] = Words.Subjects[0];
             Session["score1"] = 0;
             Session["score2"] = 0;
-            Session["player1"] = "אורי";
-            Session["player2"] = "יוחאי";
+            Session["player1"] = "";
+            Session["player2"] = "";
             Session["currentPlayer"] = Session["player1"];
             this.menu.Visible = true;
+            this.players.Visible = false;
             this.score.Visible = false;
             this.rules.Visible = false;
             this.game.Visible = false;
@@ -35,13 +36,15 @@ public partial class Main : System.Web.UI.Page
         if (Session["currentPlayer"] == null)
             Response.Redirect(Request.Url.AbsoluteUri);
 
-        strNamePlaying = "← " + Session["currentPlayer"];
-
-
-        if (Session["currentPlayer"] == null || Session["player1"] == null || Session["player2"] == null)
-            Response.Redirect(Request.Url.AbsoluteUri);
-        strName = Session["currentPlayer"].ToString() == Session["player1"].ToString() ? Session["player2"].ToString() : Session["player1"].ToString();
         
+
+        /*strNamePlaying = "← " + Session["currentPlayer"];
+
+
+        if (strCurrentPlayer == null || strPlayer1 == null || Session["player2"] == null)
+            Response.Redirect(Request.Url.AbsoluteUri);
+        strName = strCurrentPlayer.ToString() == strPlayer1.ToString() ? Session["player2"].ToString() : strPlayer1.ToString();*/
+
         //str = "<audio src='Assets/Audio/super_mario_ands_yos.mp3' autoplay='autoplay' loop='loop'/>";
     }
     protected void wrapLetters_Load(object sender, EventArgs e)
@@ -112,7 +115,7 @@ public partial class Main : System.Web.UI.Page
         if (Session["currentPlayer"] == null || Session["player1"] == null)
             Response.Redirect(Request.Url.AbsoluteUri);
 
-        if (Session["currentPlayer"] == Session["player1"])
+        if (Session["currentPlayer"] == Session["player1"].ToString())
         {
             Session["score2"] = (int)Session["score2"] + 1;
         }
@@ -216,9 +219,9 @@ public partial class Main : System.Web.UI.Page
 
             if (Session["currentPlayer"] == null || Session["player1"] == null || Session["player2"] == null)
                 Response.Redirect(Request.Url.AbsoluteUri);
-            Session["currentPlayer"] = Session["currentPlayer"].ToString() == Session["player1"].ToString() ? Session["player2"].ToString() : Session["player1"].ToString();
+            Session["currentPlayer"] = Session["currentPlayer"].ToString() == Session["player1"].ToString() ? Session["player2"].ToString() : Session["player2"].ToString();
             strNamePlaying = "← " + Session["currentPlayer"].ToString();
-            strName = Session["currentPlayer"].ToString() == Session["player1"].ToString() ? Session["player2"].ToString() : Session["player1"].ToString();
+            strName = Session["currentPlayer"].ToString() == Session["player2"].ToString() ? Session["player2"].ToString() : Session["player2"].ToString();
 
             this.imgHangman.ImageUrl = "~/Assets/Images/Hangman1.png";
             ResetChar();
@@ -230,18 +233,36 @@ public partial class Main : System.Web.UI.Page
     }
     protected void newGame_Click(object sender, EventArgs e)
     {
+
         InitGame(); // New word
         ShowWord(EmptyWord()); // New placeholders 
         ResetChar(); // Reset char
         this.imgHangman.ImageUrl = "~/Assets/Images/Hangman1.png";
     }
-    protected void btnStart_Click(object sender, EventArgs e)
+    protected void btnPlayersNames_Click(object sender, EventArgs e) {
+        this.menu.Visible = false;
+        this.score.Visible = false;
+        this.rules.Visible = false;
+        this.game.Visible = false;
+        this.pnlJumpMain.Visible = true;
+        this.newGame.Visible = false;
+    }
+    protected void btnStartGame_Click(object sender, EventArgs e)
     {
         this.menu.Visible = false;
+        this.players.Visible = false;
         this.score.Visible = false;
         this.rules.Visible = false;
         this.game.Visible = true;
         this.pnlJumpMain.Visible = true;
+        this.newGame.Visible = true;
+
+        Session["player1"] = this.txtPlayerName1.Text.Trim() == "" ? "שחקן 1" : this.txtPlayerName1.Text.Trim();
+        Session["player2"] = this.txtPlayerName2.Text.Trim() == "" ? "שחקן 2" : this.txtPlayerName2.Text.Trim();
+        Session["currentPlayer"] = Session["player1"].ToString();
+
+        strNamePlaying = "← " + Session["currentPlayer"];
+        strName = Session["currentPlayer"].ToString() == Session["player1"].ToString() ? Session["player2"].ToString() : Session["player1"].ToString();
     }
     protected void btnScore_Click(object sender, EventArgs e)
     {
@@ -276,4 +297,6 @@ public partial class Main : System.Web.UI.Page
         ResetChar(); // Reset char
         this.imgHangman.ImageUrl = "~/Assets/Images/Hangman1.png";
     }
+
+    
 }
